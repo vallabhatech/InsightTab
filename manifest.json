@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "SmartTab",
-  "version": "1.0",
-  "description": "AI-powered tab management and content analysis",
+  "name": "InsightTab",
+  "version": "1.1.0",
+  "description": "AI-assisted content analysis and insights in the browser",
   "permissions": [
     "activeTab",
     "scripting",
@@ -14,8 +14,10 @@
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["content.js"]
-  }]
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
 }
