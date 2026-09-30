@@ -1,151 +1,114 @@
-# SmartContent - AI-Powered Content Analysis Web App
+# InsightTab
 
-![SmartContent Banner](https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200&h=400)
+**InsightTab** is a Chrome extension/web interface for turning selected or pasted content into concise summaries, tags, and actionable suggestions.
 
-## 🚀 Overview
+> The repository is the source of truth. Documentation describes the implementation currently present in this codebase.
 
-SmartContent is a powerful web application built for the Google Chrome Built-in AI Challenge. It leverages Chrome's built-in AI capabilities and the Gemini API to provide intelligent content analysis and insights.
+## Features
 
-### ✨ Key Features
+- Content analysis through an AI provider
+- Summary generation
+- Automatic tag extraction
+- Suggestion/insight generation
+- Chrome Manifest V3 extension structure
+- React + TypeScript frontend
+- Tailwind CSS styling
+- ESLint quality checks
+- Reproducible CI for pull requests and pushes to `main`
 
-- **Smart Content Analysis**: Advanced text analysis powered by Chrome's built-in AI models
-- **Instant Summaries**: Get concise summaries of any content
-- **Intelligent Tagging**: Automatically generate relevant tags and topics
-- **Smart Suggestions**: Receive AI-powered insights and recommendations
-- **Real-time Processing**: Instant analysis with beautiful loading states
-- **Responsive Design**: Works seamlessly across all devices
+## Architecture
 
-## 🔧 Technology Stack
-
-- **Frontend**: React + TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide React
-- **AI Integration**: Google Gemini API
-- **Build Tool**: Vite
-
-## 📦 Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/prabhsharan1/smart-content.git
-   cd smart-content
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file in the root directory and add your Gemini API key:
-
-   ```env
-   VITE_GEMINI_API_KEY=your_api_key_here
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-## 🎯 Usage
-
-1. Navigate to the web app.
-2. Paste your content in the text area.
-3. Click "Analyze" to get instant AI-powered insights.
-4. View the generated summary, tags, and suggestions.
-
-## 🗰 Project Structure
-
-```plaintext
-src/
-├── components/          # React components
-│   ├── Header.tsx
-│   ├── ContentAnalyzer.tsx
-│   └── AnalysisResults.tsx
-├── utils/              # Utility functions
-│   └── ai.ts           # AI-related functions
-├── types/              # TypeScript types
-│   └── index.ts
-├── hooks/              # Custom React hooks
-└── App.tsx             # Main application component
+```text
+Chrome Extension
+├── manifest.json       Extension metadata and permissions
+├── background.js       Background service worker
+├── content.js          Page/content integration
+└── React UI
+    ├── src/App.tsx
+    ├── src/components/
+    ├── src/hooks/
+    ├── src/utils/ai.ts AI provider integration
+    └── src/types.ts   Shared TypeScript models
 ```
 
-## 🔍 Submission Information
-This project was created for the **Google Chrome Built-in AI Challenge**, showcasing the possibilities of Chrome's built-in AI capabilities to enrich productivity and content understanding directly in the browser.
+## Stack
 
-### 🎥 Video Demonstration
-Watch the video demonstration here: [SmartContent](https://youtu.be/kxTmtv777ew)
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React
+- Chrome Extension Manifest V3
+- Gemini API integration
 
-### 🌐 Live Web App
-You can try out the live version of SmartContent here: [Netlify Live Link](https://stellular-kheer-8afbc5.netlify.app/)
+## Local development
 
-### 🖋️ Text Description
+### Prerequisites
 
-**SmartContent - AI-Powered Content Analysis Web App** is a Chrome web app that leverages Google’s Gemini API and Chrome’s built-in AI models to provide efficient, real-time content analysis directly in the browser. It helps users quickly summarize text, generate relevant tags, and receive smart suggestions, addressing the need for productivity tools that streamline content consumption and understanding.
+- Node.js 20+
+- npm
+- A Gemini API key if AI analysis is enabled
 
-#### APIs Used
-- **Gemini API**: Powers the intelligent content analysis, providing summaries, tags, and context-aware insights.
-- **Prompt API in Chrome Extensions**: Enables dynamic user interaction with the AI model, enhancing the experience by keeping all processes local for privacy.
+### Setup
 
-#### Problem Solved
-SmartContent tackles the common challenge of quickly distilling key information from extensive content, helping users gain insights and generate ideas faster. It’s ideal for researchers, content creators, and anyone looking to save time and improve productivity by leveraging Chrome’s AI capabilities.
+```bash
+npm install
+```
 
-## 🖋️ Development Feedback
+Create a local `.env` file:
 
-Throughout the development of SmartContent, the integration with the Gemini API and Chrome's built-in AI APIs proved both powerful and challenging. Here are some observations:
+```env
+VITE_GEMINI_API_KEY=your_api_key_here
+```
 
-### Strengths:
+Then start the development server:
 
-- **Gemini API**: This API offered accurate and fast content analysis, with responses that significantly enhanced the extension’s utility for summaries and keyword generation.
-- **Prompt API**: Provided a flexible way to interact with users dynamically, maintaining all processing locally, which improved privacy and responsiveness.
+```bash
+npm run dev
+```
 
-### Challenges:
+For a production build:
 
-- **API Constraints**: Some limitations on API response structure required additional error handling, especially when responses were unexpectedly formatted or missing expected data fields.
-- **Rate Limiting and Quotas**: Working within API quotas and handling rate limits was essential, especially when testing iteratively.
+```bash
+npm run build
+```
 
-Overall, these APIs allowed for a quick and smooth content analysis experience directly in Chrome, but it was crucial to develop workarounds for error handling and response formatting issues. This feedback aims to provide Google with insight into real-world development challenges with these models, which would enhance developer experience if addressed.
+For linting:
 
-## 🤝 Contributing
+```bash
+npm run lint
+```
 
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/amazing-feature`).
-3. Commit your changes (`git commit -m 'Add some amazing feature'`).
-4. Push to the branch (`git push origin feature/amazing-feature`).
-5. Open a Pull Request.
+## Chrome extension
 
-## 👍 Fresh Hacks Winner
-SmartContent was recognized as the **Fresh Hacks Winner**! Check out the [Devpost Project Page](https://devpost.com/software/smartcontent-4udkj1?ref_content=user-portfolio&ref_feature=in_progress) for more details.
+Build the project first, then load the generated extension assets through Chrome's **Load unpacked** developer-extension workflow. Review the generated output and extension manifest before publishing.
 
-## 🔄 License
+## Security notes
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The current frontend integration calls the AI provider directly from the client. A `VITE_` environment variable is therefore **not a server-side secret**; a production deployment should move privileged API access behind a trusted backend or another architecture designed for client-side credentials.
 
-## 🏆 Chrome Built-in AI Challenge
+Only send content to an external AI provider when users understand and accept that data flow. Keep extension permissions minimal and treat web-page content as untrusted input.
 
-This project was created for the Google Chrome Built-in AI Challenge, showcasing the possibilities of Chrome's built-in AI capabilities. It demonstrates how AI can enhance content understanding and user productivity directly in the browser.
+See [SECURITY.md](SECURITY.md) for the project's security guidance.
 
-### Challenge Features Used:
-- Content Analysis API
-- Smart Summarization
-- Intelligent Tagging
-- Context-Aware Suggestions
+## CI
 
-## 🔒 Privacy
+GitHub Actions runs:
 
-SmartContent processes all content locally using Chrome's built-in AI capabilities. No content is stored or transmitted to external servers except for API calls to the Gemini API for enhanced analysis.
+1. `npm ci`
+2. `npm run lint`
+3. `npm run build`
 
-## 🙏 Acknowledgments
+This workflow runs for pushes to `main` and pull requests.
 
-- Google Chrome Built-in AI Challenge
-- Google Gemini API
-- The React and TypeScript communities
-- All contributors and users
+## Project history
+
+See [CHANGELOG.md](CHANGELOG.md) for repository-level changes.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
 
 ---
 
-Made with ❤️ for the Google Chrome Built-in AI Challenge.
-
+Built as an experiment in browser-based AI-assisted content understanding.
