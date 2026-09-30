@@ -7,8 +7,10 @@ interface TabActionsProps {
 }
 
 const TabActions: React.FC<TabActionsProps> = ({ tab }) => {
+  void tab;
+
   const handleAction = (action: string) => {
-    // Implementation will use Chrome's built-in AI APIs
+    // Action hooks can be connected to Chrome APIs as the feature surface grows.
     console.log(`Performing ${action}`);
   };
 
@@ -48,6 +50,6 @@ const TabActions: React.FC<TabActionsProps> = ({ tab }) => {
       </button>
     </div>
   );
-}
+};
 
 export default TabActions;
