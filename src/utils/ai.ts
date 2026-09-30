@@ -55,7 +55,7 @@ function parseTags(value: string): string[] {
 function parseSuggestions(value: string): string[] {
   return value
     .split('\n')
-    .map((suggestion) => suggestion.replace(/^[•\-*]\s*/, '').trim())
+    .map((suggestion) => suggestion.replace(/^[•*]/, '').replace(/^- /, '').trim())
     .filter(Boolean)
     .slice(0, 10);
 }
